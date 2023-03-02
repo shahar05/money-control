@@ -22,7 +22,7 @@ export class FileService {
       let reader = new FileReader();
       reader.readAsText(file);
       reader.onload = (event: any) => {
-        let t: Transaction[] = this.createTransactions(event.target);
+        let t: TransactionsArray[] = this.createTransactions(event.target);
         o.next(t);
         o.unsubscribe();
       };
@@ -57,29 +57,42 @@ export class FileService {
     return str;
   }
 
-  createTransactions(target: any): Transaction[] {
-    const t: Transaction[] = [];
-    // erase all text before the table
+  createTransactions(target: any): TransactionsArray[] {
+    const t: TransactionsArray[] = [];  
     let text: string = this.sliceByChar(target.result, '\n', 3);
     let titles = this.getNextRaw(this.sliceByChar(target.result, '\n', 2));
-
-    let details: TransactionsArray = this.getTransDetails(text);
-
     if (titles) {
       this.setTitlesIndexes(titles.raw);
     }
+    
 
-    let raw = this.getNextRaw(text);
-    let i = 0;
-    // 2.create Trans from current raw (until \n)
-    while (raw) {
-      i++;
-      let trans: Transaction = this.createTransaction(raw.raw);
-      t.push(trans);
-      raw = this.getNextRaw(raw.text);
-    }
     return t;
   }
+
+  // createTransactions(target: any): Transaction[] {
+  //   const t: Transaction[] = [];
+  //   // erase all text before the table
+  //   let text: string = this.sliceByChar(target.result, '\n', 3);
+  //   let titles = this.getNextRaw(this.sliceByChar(target.result, '\n', 2));
+
+  //   let details: TransactionsArray = this.getTransDetails(text);
+
+  //   if (titles) {
+  //     this.setTitlesIndexes(titles.raw);
+  //   }
+
+  //   let raw = this.getNextRaw(text);
+  //   let i = 0;
+
+  //   // create Trans from current raw (until \n)
+  //   while (raw) {
+  //     i++;
+  //     let trans: Transaction = this.createTransaction(raw.raw);
+  //     t.push(trans);
+  //     raw = this.getNextRaw(raw.text);
+  //   }
+  //   return t;
+  // }
 
   getTransDetails(text: string): TransactionsArray {
     const details: TransactionsArray = {creditCard: 0 ,month:0 , trans:[]};
