@@ -1,0 +1,37 @@
+<div class="container">
+    <input type="file" (change)="handleFileSelect($event)">
+
+    <div class="trans-container" *ngIf="displayKeys">
+        <div class="current-card mt-5">
+            <div>
+                {{currTrans?.date | date: 'dd/MM/yyyy'}}
+            </div>
+            <div>
+                {{currTrans?.store}}
+            </div>
+            <div>
+                ₪ {{currTrans?.price}}
+            </div>
+        </div>
+        <div class="list-container mt-5">
+            <div *ngFor="let cat of categories; let i = index">
+                <div class="trans-card" (click)="joinTrans(i)">
+                    {{cat}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="showPieChart">
+        <canvas baseChart
+        [type]="'pie'"
+        [datasets]="pieChartDatasets"
+        [labels]="pieChartLabels"
+        [options]="pieChartOptions"
+        [plugins]="pieChartPlugins"
+        [legend]="pieChartLegend"
+        (chartClick)="chartClicked($event)"></canvas>
+    </div>
+</div>
+
+
+

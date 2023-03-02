@@ -1,0 +1,52 @@
+.container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+
+    .trans-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .current-card {
+            padding: 20px;
+            border:5px solid #242527;
+            text-align: center;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    }
+
+    .list-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .trans-card {
+        padding: 20px;
+        border: 2px solid #92A8D1;
+        border-radius: 20px;
+        cursor: pointer;
+        color: white;
+        background-color: #92A8D1;
+        
+        &.money-card{
+            border-color: #242527;
+            background-color: #242527;
+        }
+        // &.selected {
+        //     color: white;
+        //     background-color: #92A8D1;
+        // }
+    }
+
+    .mt-5{
+        margin-top: 20px;
+    }
+}
