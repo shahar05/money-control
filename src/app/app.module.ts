@@ -8,6 +8,8 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
 import { HttpClientModule } from '@angular/common/http';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { NgChartsModule } from 'ng2-charts';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { NgChartsModule } from 'ng2-charts';
     BrowserAnimationsModule,
     HttpClientModule,
     DragDropModule,
-    NgChartsModule
+    NgChartsModule,
+    MatButtonToggleModule,
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })

@@ -21,6 +21,11 @@
             </div>
         </div>
     </div>
+
+    <mat-button-toggle-group (change)="monthSelected($event)">
+        <mat-button-toggle *ngFor="let transItem of transArray" [value]="transItem.month - 1"> {{monthNames[transItem.month - 1] }} </mat-button-toggle>
+      </mat-button-toggle-group>
+
     <div *ngIf="showPieChart">
         <canvas baseChart
         [type]="'pie'"
